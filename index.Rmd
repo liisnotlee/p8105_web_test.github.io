@@ -1,0 +1,22 @@
+---
+title: "My awesome website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# This is Jeff's awesome website
+
+Some TEXT.
+
+Link to [course website](https://p8105.com/index.html)
+
+Link to [about page](about.html)
+
+Go to [plot page](plots.html)
+
+Fonts from fontawesome.com
+
+
+![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)

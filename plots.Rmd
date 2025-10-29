@@ -1,0 +1,32 @@
+---
+title: "Plots"
+output: 
+  html_document:
+    theme: cerulean
+---
+
+Embedding plots in html
+
+Tidyverse
+```{r message=FALSE}
+library(tidyverse)
+```
+
+A dataframe
+```{r}
+plot_df=
+  tibble(
+    x = rnorm(100,mean=1,sd=2),
+    y=1+2*x+rnorm(100)
+  )
+```
+
+Plot here
+```{r}
+plot_df |> 
+  ggplot(aes(x=x, y=y))+
+  geom_point()
+```
+
+Go back to [home page](index.html)
+

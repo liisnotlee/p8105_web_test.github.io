@@ -1,0 +1,9 @@
+---
+title: "About this website"
+output: 
+  html_document:
+    theme: cerulean
+---
+Link to [course website](https://p8105.com/index.html)
+
+Go back to [home page](index.html)
