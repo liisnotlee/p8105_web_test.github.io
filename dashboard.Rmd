@@ -1,20 +1,19 @@
 ---
-title: "plotly"
-author: "Muying Li"
-date: "2025-10-29"
-output: html_document
+title: "Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
 
-```{r message=FALSE}
+```{r setup, include=FALSE}
+library(flexdashboard)
 library(tidyverse)
 library(plotly)
 library(p8105.datasets)
 ```
 
-Load Airbnb dataset in NYC
-
-Get a much smaller dataset for easier processing & deployment on internet
 ```{r}
 data("nyc_airbnb")
 nyc_airbnb = 
@@ -33,9 +32,12 @@ nyc_airbnb =
   )
 ```
 
+Column {data-width=650}
+-----------------------------------------------------------------------
 
-Interactive scatterplot
-```{r}
+### Chart A
+
+```{r scatterplot}
 nyc_airbnb |>
   mutate(
     label = str_c("Price: $", price, "\nRating: ",rating)
@@ -47,7 +49,11 @@ nyc_airbnb |>
   )
 ```
 
-Boxplot
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
 ```{r}
 nyc_airbnb |> 
   mutate(
@@ -59,9 +65,8 @@ nyc_airbnb |>
   )
 ```
 
-Bar charts
+### Chart C
 
-how many airbnbs in each neighborhood
 ```{r}
 nyc_airbnb |> 
   count(neighbourhood) |> 
@@ -70,20 +75,4 @@ nyc_airbnb |>
     x=~neighbourhood, y=~n, type = "bar"
   )
 ```
-
-NOT recommended:
-convert ggplot to ggplotly
-```{r}
-scatter_ggplot = 
-  nyc_airbnb |>
-  ggplot(aes(x = lat, y = long, color = price)) +
-  geom_point(alpha = 0.25) +
-  coord_cartesian()
-
-ggplotly(scatter_ggplot)
-```
-
-
-# Making dashboard
-
 
