@@ -47,5 +47,27 @@ nyc_airbnb |>
   )
 ```
 
+Boxplot
+```{r}
+nyc_airbnb |> 
+  mutate(
+    neighbourhood = fct_reorder(neighbourhood, price)
+  ) |> 
+  plot_ly(
+    x=~neighbourhood,y=~price, color=~neighbourhood,
+    type="box", colors = "viridis"
+  )
+```
 
+Bar charts
+
+how many airbnbs in each neighborhood
+```{r}
+nyc_airbnb |> 
+  count(neighbourhood) |> 
+  mutate(neighbourhood = fct_reorder(neighbourhood, n)) |> 
+  plot_ly(
+    x=~neighbourhood, y=~n, type = "bar"
+  )
+```
 
